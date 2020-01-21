@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.threemusketeers.carsleasemanager.mapper.VehicleMapper" >
+  <resultMap id="BaseResultMap" type="com.threemusketeers.carsleasemanager.entity.Vehicle" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vehicle_logo" property="vehicleLogo" jdbcType="VARCHAR" />
+    <result column="vehicle_num" property="vehicleNum" jdbcType="VARCHAR" />
+    <result column="travel_num" property="travelNum" jdbcType="INTEGER" />
+    <result column="vehicle_img" property="vehicleImg" jdbcType="VARCHAR" />
+    <result column="vehicle_detail" property="vehicleDetail" jdbcType="VARCHAR" />
+    <result column="contact_begin" property="contactBegin" jdbcType="TIMESTAMP" />
+    <result column="contact_end" property="contactEnd" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vehicle_logo, vehicle_num, travel_num, vehicle_img, vehicle_detail, contact_begin, 
+    contact_end, create_by, create_date, update_by, update_date, remarks, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_vehicle
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_vehicle
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.threemusketeers.carsleasemanager.entity.Vehicle" >
+    insert into sys_vehicle (id, vehicle_logo, vehicle_num, 
+      travel_num, vehicle_img, vehicle_detail, 
+      contact_begin, contact_end, create_by, 
+      create_date, update_by, update_date, 
+      remarks, del_flag)
+    values (#{id,jdbcType=INTEGER}, #{vehicleLogo,jdbcType=VARCHAR}, #{vehicleNum,jdbcType=VARCHAR}, 
+      #{travelNum,jdbcType=INTEGER}, #{vehicleImg,jdbcType=VARCHAR}, #{vehicleDetail,jdbcType=VARCHAR}, 
+      #{contactBegin,jdbcType=TIMESTAMP}, #{contactEnd,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.threemusketeers.carsleasemanager.entity.Vehicle" >
+    insert into sys_vehicle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vehicleLogo != null" >
+        vehicle_logo,
+      </if>
+      <if test="vehicleNum != null" >
+        vehicle_num,
+      </if>
+      <if test="travelNum != null" >
+        travel_num,
+      </if>
+      <if test="vehicleImg != null" >
+        vehicle_img,
+      </if>
+      <if test="vehicleDetail != null" >
+        vehicle_detail,
+      </if>
+      <if test="contactBegin != null" >
+        contact_begin,
+      </if>
+      <if test="contactEnd != null" >
+        contact_end,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleLogo != null" >
+        #{vehicleLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNum != null" >
+        #{vehicleNum,jdbcType=VARCHAR},
+      </if>
+      <if test="travelNum != null" >
+        #{travelNum,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleImg != null" >
+        #{vehicleImg,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleDetail != null" >
+        #{vehicleDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactBegin != null" >
+        #{contactBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactEnd != null" >
+        #{contactEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.threemusketeers.carsleasemanager.entity.Vehicle" >
+    update sys_vehicle
+    <set >
+      <if test="vehicleLogo != null" >
+        vehicle_logo = #{vehicleLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleNum != null" >
+        vehicle_num = #{vehicleNum,jdbcType=VARCHAR},
+      </if>
+      <if test="travelNum != null" >
+        travel_num = #{travelNum,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleImg != null" >
+        vehicle_img = #{vehicleImg,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleDetail != null" >
+        vehicle_detail = #{vehicleDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactBegin != null" >
+        contact_begin = #{contactBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactEnd != null" >
+        contact_end = #{contactEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.threemusketeers.carsleasemanager.entity.Vehicle" >
+    update sys_vehicle
+    set vehicle_logo = #{vehicleLogo,jdbcType=VARCHAR},
+      vehicle_num = #{vehicleNum,jdbcType=VARCHAR},
+      travel_num = #{travelNum,jdbcType=INTEGER},
+      vehicle_img = #{vehicleImg,jdbcType=VARCHAR},
+      vehicle_detail = #{vehicleDetail,jdbcType=VARCHAR},
+      contact_begin = #{contactBegin,jdbcType=TIMESTAMP},
+      contact_end = #{contactEnd,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

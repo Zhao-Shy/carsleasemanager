@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.threemusketeers.carsleasemanager.mapper.AccidentMapper" >
+  <resultMap id="BaseResultMap" type="com.threemusketeers.carsleasemanager.entity.Accident" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="accident_detail" property="accidentDetail" jdbcType="VARCHAR" />
+    <result column="accident_time" property="accidentTime" jdbcType="TIMESTAMP" />
+    <result column="vehicle_id" property="vehicleId" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, accident_detail, accident_time, vehicle_id, create_by, create_date, update_by, 
+    update_date, remarks, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from vehicle_accident
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from vehicle_accident
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.threemusketeers.carsleasemanager.entity.Accident" >
+    insert into vehicle_accident (id, accident_detail, accident_time, 
+      vehicle_id, create_by, create_date, 
+      update_by, update_date, remarks, 
+      del_flag)
+    values (#{id,jdbcType=INTEGER}, #{accidentDetail,jdbcType=VARCHAR}, #{accidentTime,jdbcType=TIMESTAMP}, 
+      #{vehicleId,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.threemusketeers.carsleasemanager.entity.Accident" >
+    insert into vehicle_accident
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="accidentDetail != null" >
+        accident_detail,
+      </if>
+      <if test="accidentTime != null" >
+        accident_time,
+      </if>
+      <if test="vehicleId != null" >
+        vehicle_id,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accidentDetail != null" >
+        #{accidentDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="accidentTime != null" >
+        #{accidentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vehicleId != null" >
+        #{vehicleId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.threemusketeers.carsleasemanager.entity.Accident" >
+    update vehicle_accident
+    <set >
+      <if test="accidentDetail != null" >
+        accident_detail = #{accidentDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="accidentTime != null" >
+        accident_time = #{accidentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vehicleId != null" >
+        vehicle_id = #{vehicleId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.threemusketeers.carsleasemanager.entity.Accident" >
+    update vehicle_accident
+    set accident_detail = #{accidentDetail,jdbcType=VARCHAR},
+      accident_time = #{accidentTime,jdbcType=TIMESTAMP},
+      vehicle_id = #{vehicleId,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

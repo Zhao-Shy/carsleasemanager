@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.threemusketeers.carsleasemanager.mapper.ContractMapper" >
+  <resultMap id="BaseResultMap" type="com.threemusketeers.carsleasemanager.entity.Contract" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="deposit" property="deposit" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="lease_type" property="leaseType" jdbcType="INTEGER" />
+    <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="begin_oil" property="beginOil" jdbcType="DECIMAL" />
+    <result column="end_oil" property="endOil" jdbcType="DECIMAL" />
+    <result column="oil_spread" property="oilSpread" jdbcType="DECIMAL" />
+    <result column="maintain_spread" property="maintainSpread" jdbcType="DECIMAL" />
+    <result column="overdue_spread" property="overdueSpread" jdbcType="DECIMAL" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="overdue_time" property="overdueTime" jdbcType="INTEGER" />
+    <result column="vehicle_id" property="vehicleId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, deposit, status, lease_type, begin_time, end_time, begin_oil, end_oil, oil_spread, 
+    maintain_spread, overdue_spread, amount, overdue_time, vehicle_id, user_id, create_by, 
+    create_date, update_by, update_date, remarks, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lease_contact
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lease_contact
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.threemusketeers.carsleasemanager.entity.Contract" >
+    insert into lease_contact (id, deposit, status, 
+      lease_type, begin_time, end_time, 
+      begin_oil, end_oil, oil_spread, 
+      maintain_spread, overdue_spread, amount, 
+      overdue_time, vehicle_id, user_id, 
+      create_by, create_date, update_by, 
+      update_date, remarks, del_flag
+      )
+    values (#{id,jdbcType=INTEGER}, #{deposit,jdbcType=DECIMAL}, #{status,jdbcType=INTEGER}, 
+      #{leaseType,jdbcType=INTEGER}, #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{beginOil,jdbcType=DECIMAL}, #{endOil,jdbcType=DECIMAL}, #{oilSpread,jdbcType=DECIMAL}, 
+      #{maintainSpread,jdbcType=DECIMAL}, #{overdueSpread,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL}, 
+      #{overdueTime,jdbcType=INTEGER}, #{vehicleId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.threemusketeers.carsleasemanager.entity.Contract" >
+    insert into lease_contact
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="deposit != null" >
+        deposit,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="leaseType != null" >
+        lease_type,
+      </if>
+      <if test="beginTime != null" >
+        begin_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="beginOil != null" >
+        begin_oil,
+      </if>
+      <if test="endOil != null" >
+        end_oil,
+      </if>
+      <if test="oilSpread != null" >
+        oil_spread,
+      </if>
+      <if test="maintainSpread != null" >
+        maintain_spread,
+      </if>
+      <if test="overdueSpread != null" >
+        overdue_spread,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="overdueTime != null" >
+        overdue_time,
+      </if>
+      <if test="vehicleId != null" >
+        vehicle_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="deposit != null" >
+        #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="leaseType != null" >
+        #{leaseType,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginOil != null" >
+        #{beginOil,jdbcType=DECIMAL},
+      </if>
+      <if test="endOil != null" >
+        #{endOil,jdbcType=DECIMAL},
+      </if>
+      <if test="oilSpread != null" >
+        #{oilSpread,jdbcType=DECIMAL},
+      </if>
+      <if test="maintainSpread != null" >
+        #{maintainSpread,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueSpread != null" >
+        #{overdueSpread,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueTime != null" >
+        #{overdueTime,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleId != null" >
+        #{vehicleId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.threemusketeers.carsleasemanager.entity.Contract" >
+    update lease_contact
+    <set >
+      <if test="deposit != null" >
+        deposit = #{deposit,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="leaseType != null" >
+        lease_type = #{leaseType,jdbcType=INTEGER},
+      </if>
+      <if test="beginTime != null" >
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="beginOil != null" >
+        begin_oil = #{beginOil,jdbcType=DECIMAL},
+      </if>
+      <if test="endOil != null" >
+        end_oil = #{endOil,jdbcType=DECIMAL},
+      </if>
+      <if test="oilSpread != null" >
+        oil_spread = #{oilSpread,jdbcType=DECIMAL},
+      </if>
+      <if test="maintainSpread != null" >
+        maintain_spread = #{maintainSpread,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueSpread != null" >
+        overdue_spread = #{overdueSpread,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueTime != null" >
+        overdue_time = #{overdueTime,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleId != null" >
+        vehicle_id = #{vehicleId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.threemusketeers.carsleasemanager.entity.Contract" >
+    update lease_contact
+    set deposit = #{deposit,jdbcType=DECIMAL},
+      status = #{status,jdbcType=INTEGER},
+      lease_type = #{leaseType,jdbcType=INTEGER},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      begin_oil = #{beginOil,jdbcType=DECIMAL},
+      end_oil = #{endOil,jdbcType=DECIMAL},
+      oil_spread = #{oilSpread,jdbcType=DECIMAL},
+      maintain_spread = #{maintainSpread,jdbcType=DECIMAL},
+      overdue_spread = #{overdueSpread,jdbcType=DECIMAL},
+      amount = #{amount,jdbcType=DECIMAL},
+      overdue_time = #{overdueTime,jdbcType=INTEGER},
+      vehicle_id = #{vehicleId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
