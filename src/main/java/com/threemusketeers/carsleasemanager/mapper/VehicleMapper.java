@@ -1,7 +1,9 @@
 package com.threemusketeers.carsleasemanager.mapper;
 
 import com.threemusketeers.carsleasemanager.entity.Vehicle;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface VehicleMapper {
     int deleteByPrimaryKey(Integer id);
 

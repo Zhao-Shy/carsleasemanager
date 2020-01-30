@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.threemusketeers.carsleasemanager.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="user" >
+  <resultMap id="BaseResultMap" type="com.threemusketeers.carsleasemanager.entity.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -35,7 +35,7 @@
     delete from sys_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="user" >
+  <insert id="insert" parameterType="com.threemusketeers.carsleasemanager.entity.User" >
     insert into sys_user (id, username, password, 
       user_type, name, moblie, 
       address, occupation, id_card_img, 
@@ -49,7 +49,7 @@
       #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
       #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="user" >
+  <insert id="insertSelective" parameterType="com.threemusketeers.carsleasemanager.entity.User" >
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -158,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="user" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.threemusketeers.carsleasemanager.entity.User" >
     update sys_user
     <set >
       <if test="username != null" >
@@ -212,7 +212,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="user" >
+  <update id="updateByPrimaryKey" parameterType="com.threemusketeers.carsleasemanager.entity.User" >
     update sys_user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

@@ -1,6 +1,7 @@
 package com.threemusketeers.carsleasemanager.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Author: zhaoshy
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
  * @Description:
  */
 
-@Controller
+@RestController
 public class VehicleController {
+
 }

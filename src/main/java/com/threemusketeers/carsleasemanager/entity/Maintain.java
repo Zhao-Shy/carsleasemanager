@@ -1,11 +1,9 @@
 package com.threemusketeers.carsleasemanager.entity;
 
 import lombok.Data;
-import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
 
-@Alias("maintain")
 @Data
 public class Maintain {
     private Integer id;
@@ -29,4 +27,5 @@ public class Maintain {
     private String remarks;
 
     private String delFlag;
+
 }

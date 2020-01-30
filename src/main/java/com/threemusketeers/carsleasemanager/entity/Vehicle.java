@@ -1,11 +1,9 @@
 package com.threemusketeers.carsleasemanager.entity;
 
 import lombok.Data;
-import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
 
-@Alias("vehicle")
 @Data
 public class Vehicle {
     private Integer id;
@@ -35,4 +33,5 @@ public class Vehicle {
     private String remarks;
 
     private Integer delFlag;
+
 }
