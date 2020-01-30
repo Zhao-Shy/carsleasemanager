@@ -21,7 +21,7 @@ public class UserController {
         return "failed";
     }
 
-    @PostMapping("/login")
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User login(@RequestBody User user) {
         User login = userService.login(user);
         return login;
