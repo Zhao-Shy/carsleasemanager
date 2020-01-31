@@ -4,8 +4,6 @@ import com.threemusketeers.carsleasemanager.entity.Contract;
 import com.threemusketeers.carsleasemanager.http.ResponseEntityBase;
 import com.threemusketeers.carsleasemanager.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
