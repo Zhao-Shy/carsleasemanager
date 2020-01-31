@@ -1,6 +1,7 @@
 package com.threemusketeers.carsleasemanager.controller;
 
 import com.threemusketeers.carsleasemanager.entity.Contract;
+import com.threemusketeers.carsleasemanager.http.RequestContract;
 import com.threemusketeers.carsleasemanager.http.ResponseEntityBase;
 import com.threemusketeers.carsleasemanager.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class ContractController {
 
     @PostMapping("/add")
     public ResponseEntityBase addContract(@RequestBody Contract contract) {
+
         int i = contractService.addContract(contract);
         ResponseEntityBase responseEntityBase = new ResponseEntityBase();
         if (i > 0) {

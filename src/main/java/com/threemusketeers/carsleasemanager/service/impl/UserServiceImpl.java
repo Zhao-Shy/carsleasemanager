@@ -37,4 +37,15 @@ public class UserServiceImpl implements UserService {
         User login = userMapperExtend.login(user);
         return login;
     }
+
+    /**
+     * @Author : zhaoshy
+     * @Date : 2020-01-31 21:05
+     * @Description : 判断用户是否存在
+     */
+    @Override
+    public String selectUser(String username) {
+        String s = userMapperExtend.selectUser(username);
+        return s;
+    }
 }

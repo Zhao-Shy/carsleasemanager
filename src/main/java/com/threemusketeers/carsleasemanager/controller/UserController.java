@@ -4,6 +4,7 @@ import com.threemusketeers.carsleasemanager.entity.User;
 import com.threemusketeers.carsleasemanager.http.ResponseEntityBase;
 import com.threemusketeers.carsleasemanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,14 +31,18 @@ public class UserController {
 
     @RequestMapping(value = "/registered", method = RequestMethod.POST)
     public ResponseEntityBase addUser(@RequestBody User user) {
-        int i = userService.addUser(user);
+        String s = userService.selectUser(user.getUsername());
         ResponseEntityBase responseEntityBase = new ResponseEntityBase();
-        if (i > 0) {
-            responseEntityBase.setCode(1);
-            responseEntityBase.setMessage("注册成功");
-            return responseEntityBase;
+        if (StringUtils.isEmpty(s)) {
+            int i = userService.addUser(user);
+            if (i > 0) {
+                responseEntityBase.setCode(1);
+                responseEntityBase.setMessage("注册成功");
+                return responseEntityBase;
+            }
+            return responseEntityBase.failed("注册失败");
         }
-        return responseEntityBase.failed("注册失败");
+        return responseEntityBase.failed("用户已注册");
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)

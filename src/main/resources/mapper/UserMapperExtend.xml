@@ -17,5 +17,11 @@
     where username = #{username}
     and password = #{password}
   </select>
+    <select id="selectUser" resultType="java.lang.String">
+        select
+            username
+        from sys_user
+        where username = #{username}
+    </select>
 
 </mapper>
