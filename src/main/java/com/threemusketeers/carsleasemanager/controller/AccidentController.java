@@ -1,6 +1,7 @@
 package com.threemusketeers.carsleasemanager.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Author: zhaoshy
@@ -11,6 +12,6 @@ import org.springframework.stereotype.Controller;
  * @Description: 事故记录相关
  */
 
-@Controller
+@RestController
 public class AccidentController {
 }

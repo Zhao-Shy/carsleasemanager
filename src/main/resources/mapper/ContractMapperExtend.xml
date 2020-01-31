@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.threemusketeers.carsleasemanager.mapper.ContractMapperExtend" >
+
+  <sql id="Base_Column_List" >
+    id, deposit, status, lease_type, begin_time, end_time, begin_oil, end_oil, oil_spread,
+    maintain_spread, overdue_spread, amount, overdue_time, vehicle_id, user_id, create_by,
+    create_date, update_by, update_date, remarks, del_flag
+  </sql>
+
+  <select id="showContract" resultType="contract">
+    select
+    <include refid="Base_Column_List" />
+    from lease_contact
+    where user_id = #{id}
+  </select>
+
+</mapper>

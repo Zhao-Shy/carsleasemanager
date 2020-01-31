@@ -9,6 +9,7 @@
 
   <select id="login" resultType="user" >
     select
+        id,
         username,
         user_type userType,
         member_type memberType
