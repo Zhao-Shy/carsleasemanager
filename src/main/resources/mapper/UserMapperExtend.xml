@@ -10,8 +10,8 @@
   <select id="login" resultType="user" >
     select
         username,
-        user_type,
-        member_type
+        user_type userType,
+        member_type memberType
     from sys_user
     where username = #{username}
     and password = #{password}

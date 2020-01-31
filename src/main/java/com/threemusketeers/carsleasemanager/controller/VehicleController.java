@@ -1,6 +1,5 @@
 package com.threemusketeers.carsleasemanager.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Contact: zsyfaith@163.com
  * @Date: 2020-01-21 16:30
  * @Version: 1.0
- * @Description:
+ * @Description: 车辆管理
  */
 
 @RestController

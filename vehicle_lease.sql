@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 30/01/2020 22:10:28
+ Date: 30/01/2020 22:31:03
 */
 
 SET NAMES utf8mb4;
@@ -58,8 +58,8 @@ CREATE TABLE `sys_user`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
   `username` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',
   `password` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户密码',
-  `user_type` int(1) NOT NULL COMMENT '用户类型（0普通用户，1会员）',
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户姓名',
+  `user_type` int(1) NULL DEFAULT NULL COMMENT '用户类型（0普通用户，1会员）',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户姓名',
   `moblie` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系方式',
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '家庭地址',
   `occupation` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '职业（字典查询）',
