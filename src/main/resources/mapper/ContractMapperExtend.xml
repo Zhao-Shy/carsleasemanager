@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.threemusketeers.carsleasemanager.mapper.ContractMapperExtend" >
+<mapper namespace="com.threemusketeers.carsleasemanager.mapper.ContractMapperExtend"  >
+
+  <resultMap id="BaseResultMap" type="contract" extends="com.threemusketeers.carsleasemanager.mapper.ContractMapper.BaseResultMap" >
+  </resultMap>
 
   <sql id="Base_Column_List" >
     id, deposit, status, lease_type, begin_time, end_time, begin_oil, end_oil, oil_spread,
@@ -8,7 +11,7 @@
     create_date, update_by, update_date, remarks, del_flag
   </sql>
 
-  <select id="showContract" resultType="contract">
+  <select id="showContract" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from lease_contact
