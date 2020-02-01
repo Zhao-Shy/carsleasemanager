@@ -21,6 +21,11 @@
     id, vehicle_logo, vehicle_num, travel_num, vehicle_img, vehicle_detail, contact_begin, 
     contact_end, create_by, create_date, update_by, update_date, remarks, del_flag
   </sql>
+  <select id="selectByAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_vehicle
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
