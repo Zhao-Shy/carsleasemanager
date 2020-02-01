@@ -12,7 +12,7 @@
     select
     <include refid="Base_Column_List" />
     from lease_contact
-    where user_id = #{id}
+    where 2 = #{userType} or user_id = #{id}
   </select>
   <select id="existContract" resultType="com.threemusketeers.carsleasemanager.entity.Contract">
     select

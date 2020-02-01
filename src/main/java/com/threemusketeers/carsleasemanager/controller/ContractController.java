@@ -28,8 +28,9 @@ public class ContractController {
     ContractService contractService;
 
     @GetMapping("/show")
-    public ResponseEntityBase<List<Contract>> showContract(@RequestParam Integer id) {
-        List<Contract> contracts = contractService.showContract(id);
+    public ResponseEntityBase<List<Contract>> showContract(@RequestParam(value = "userId") Integer id
+                                                                , @RequestParam(value = "userType") Integer userType) {
+        List<Contract> contracts = contractService.showContract(id, userType);
         ResponseEntityBase responseEntityBase = new ResponseEntityBase();
         if (contracts.size() != 0) {
             responseEntityBase.setCode(1);

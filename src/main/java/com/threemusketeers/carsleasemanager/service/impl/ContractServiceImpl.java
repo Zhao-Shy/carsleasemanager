@@ -77,8 +77,8 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public List<Contract> showContract(Integer id) {
-        List<Contract> contract = contractMapperExtend.showContract(id);
+    public List<Contract> showContract(Integer id, Integer userType) {
+        List<Contract> contract = contractMapperExtend.showContract(id, userType);
         return contract;
     }
 }

@@ -10,5 +10,5 @@ public interface ContractService {
     int delContract(Integer id);
     int editContract(Contract contract);
     Contract existContract(Map<String, Integer> map);
-    List<Contract> showContract(Integer id);
+    List<Contract> showContract(Integer id, Integer userType);
 }
