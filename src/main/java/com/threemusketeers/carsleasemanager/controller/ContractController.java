@@ -49,7 +49,7 @@ public class ContractController {
         map.put("vehicleId", vehicleId);
         Contract existContract = contractService.existContract(map);
         ResponseEntityBase responseEntityBase = new ResponseEntityBase();
-        if (existContract != null) {
+        if (existContract == null) {
             int i = contractService.addContract(contract);
             if (i > 0) {
                 responseEntityBase.setCode(1);
