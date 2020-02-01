@@ -37,8 +37,8 @@ public class ContractServiceImpl implements ContractService {
         long rent = vehicleRent.longValue() * days;
 
         if (user.getUserType() == 0) {
-            int i = contractMapper.insertSelective(contract);
             contract.setAmount(rent);
+            int i = contractMapper.insertSelective(contract);
             return i;
         } else {
             if (user.getMemberType() == 0) {

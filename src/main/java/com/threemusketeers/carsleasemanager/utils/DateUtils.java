@@ -16,6 +16,6 @@ public class DateUtils {
         long startTime = start.getTime();
         long endTime = end.getTime();
         long days = (long) ((endTime - startTime) / (1000 * 60 * 60 * 24));
-        return days;
+        return days + 1L;
     }
 }
