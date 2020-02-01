@@ -7,7 +7,9 @@ import com.threemusketeers.carsleasemanager.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: zhaoshy
@@ -39,15 +41,24 @@ public class ContractController {
 
     @PostMapping("/add")
     public ResponseEntityBase addContract(@RequestBody Contract contract) {
-
-        int i = contractService.addContract(contract);
+        // 判断该用户ID和车辆ID下有没有合同, 有就提示"已存在合同"不添加
+        Integer userId = contract.getUserId();
+        Integer vehicleId = contract.getVehicleId();
+        Map<String, Integer> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("vehicleId", vehicleId);
+        Contract existContract = contractService.existContract(map);
         ResponseEntityBase responseEntityBase = new ResponseEntityBase();
-        if (i > 0) {
-            responseEntityBase.setCode(1);
-            responseEntityBase.setMessage("添加成功");
-            return responseEntityBase;
+        if (existContract != null) {
+            int i = contractService.addContract(contract);
+            if (i > 0) {
+                responseEntityBase.setCode(1);
+                responseEntityBase.setMessage("添加成功");
+                return responseEntityBase;
+            }
+            return responseEntityBase.failed("添加失败, 请重试");
         }
-        return responseEntityBase.failed("添加失败, 请重试");
+        return responseEntityBase.failed("已存在合同, 如有疑问请联系管理员");
     }
 
     @GetMapping("/del")

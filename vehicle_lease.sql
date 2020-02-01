@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : 65001
 
- Date: 30/01/2020 22:31:03
+ Date: 01/02/2020 14:27:36
 */
 
 SET NAMES utf8mb4;
@@ -48,7 +48,7 @@ CREATE TABLE `lease_contact`  (
   INDEX `user_contact`(`user_id`) USING BTREE,
   CONSTRAINT `user_contact` FOREIGN KEY (`user_id`) REFERENCES `sys_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `vehicle_contact` FOREIGN KEY (`vehicle_id`) REFERENCES `sys_vehicle` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '租赁合同管理' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '租赁合同管理' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -83,6 +83,7 @@ CREATE TABLE `sys_vehicle`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '车辆id',
   `vehicle_logo` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车标',
   `vehicle_num` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车牌号',
+  `vehicle_rent` float(11, 0) NULL DEFAULT NULL COMMENT '租金(一天)',
   `travel_num` int(11) NULL DEFAULT NULL COMMENT '行驶公里',
   `vehicle_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车辆照片',
   `vehicle_detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车辆信息',

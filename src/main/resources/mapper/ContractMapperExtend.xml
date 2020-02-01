@@ -14,5 +14,25 @@
     from lease_contact
     where user_id = #{id}
   </select>
+  <select id="existContract" resultType="com.threemusketeers.carsleasemanager.entity.Contract">
+    select
+        user_id userId
+    from lease_contact
+    where user_id = #{userId}
+    and vehicle_id = #{vehicleId}
+  </select>
+  <select id="selectUser" resultType="com.threemusketeers.carsleasemanager.entity.User">
+    select
+        user_type userType,
+        member_type memberType
+    from sys_user
+    where id = #{userid}
+  </select>
+  <select id="getVehicleRent" resultType="java.lang.Double">
+    select
+        vehicle_rent
+    from sys_vehicle
+    where id = #{id}
+  </select>
 
 </mapper>
