@@ -8,6 +8,7 @@
     <result column="travel_num" property="travelNum" jdbcType="INTEGER" />
     <result column="vehicle_img" property="vehicleImg" jdbcType="VARCHAR" />
     <result column="vehicle_detail" property="vehicleDetail" jdbcType="VARCHAR" />
+    <result column="vehicle_rent" property="vehicleRent" jdbcType="DECIMAL" />
     <result column="contact_begin" property="contactBegin" jdbcType="TIMESTAMP" />
     <result column="contact_end" property="contactEnd" jdbcType="TIMESTAMP" />
     <result column="create_by" property="createBy" jdbcType="VARCHAR" />
@@ -18,7 +19,7 @@
     <result column="del_flag" property="delFlag" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, vehicle_logo, vehicle_num, travel_num, vehicle_img, vehicle_detail, contact_begin, 
+    id, vehicle_logo, vehicle_num, travel_num, vehicle_img, vehicle_detail, vehicle_rent, contact_begin,
     contact_end, create_by, create_date, update_by, update_date, remarks, del_flag
   </sql>
   <select id="selectByAll" resultMap="BaseResultMap">
@@ -38,15 +39,15 @@
   </delete>
   <insert id="insert" parameterType="com.threemusketeers.carsleasemanager.entity.Vehicle" >
     insert into sys_vehicle (id, vehicle_logo, vehicle_num, 
-      travel_num, vehicle_img, vehicle_detail, 
+      travel_num, vehicle_img, vehicle_detail, vehicle_rent,
       contact_begin, contact_end, create_by, 
       create_date, update_by, update_date, 
       remarks, del_flag)
     values (#{id,jdbcType=INTEGER}, #{vehicleLogo,jdbcType=VARCHAR}, #{vehicleNum,jdbcType=VARCHAR}, 
       #{travelNum,jdbcType=INTEGER}, #{vehicleImg,jdbcType=VARCHAR}, #{vehicleDetail,jdbcType=VARCHAR}, 
-      #{contactBegin,jdbcType=TIMESTAMP}, #{contactEnd,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
-      #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER})
+      #{vehicleRent,jdbcType=DECIMAL}, #{contactBegin,jdbcType=TIMESTAMP}, #{contactEnd,jdbcType=TIMESTAMP},
+      #{createBy,jdbcType=VARCHAR},  #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR},
+      #{updateDate,jdbcType=TIMESTAMP},  #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.threemusketeers.carsleasemanager.entity.Vehicle" >
     insert into sys_vehicle
@@ -68,6 +69,9 @@
       </if>
       <if test="vehicleDetail != null" >
         vehicle_detail,
+      </if>
+      <if test="vehicleRent != null" >
+        vehicle_rent,
       </if>
       <if test="contactBegin != null" >
         contact_begin,
@@ -113,6 +117,9 @@
       <if test="vehicleDetail != null" >
         #{vehicleDetail,jdbcType=VARCHAR},
       </if>
+      <if test="vehicleRent != null" >
+        #{vehicleRent,jdbcType=DECIMAL},
+      </if>
       <if test="contactBegin != null" >
         #{contactBegin,jdbcType=TIMESTAMP},
       </if>
@@ -157,6 +164,9 @@
       <if test="vehicleDetail != null" >
         vehicle_detail = #{vehicleDetail,jdbcType=VARCHAR},
       </if>
+      <if test="vehicleRent != null" >
+        vehicle_rent = #{vehicleRent,jdbcType=DECIMAL},
+      </if>
       <if test="contactBegin != null" >
         contact_begin = #{contactBegin,jdbcType=TIMESTAMP},
       </if>
@@ -191,6 +201,7 @@
       travel_num = #{travelNum,jdbcType=INTEGER},
       vehicle_img = #{vehicleImg,jdbcType=VARCHAR},
       vehicle_detail = #{vehicleDetail,jdbcType=VARCHAR},
+      vehicle_rent = #{vehicleRent,jdbcType=DECIMAL},
       contact_begin = #{contactBegin,jdbcType=TIMESTAMP},
       contact_end = #{contactEnd,jdbcType=TIMESTAMP},
       create_by = #{createBy,jdbcType=VARCHAR},

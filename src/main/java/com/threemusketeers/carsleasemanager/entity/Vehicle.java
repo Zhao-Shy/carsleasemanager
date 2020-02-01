@@ -18,6 +18,8 @@ public class Vehicle {
 
     private String vehicleDetail;
 
+    private Long vehicleRent;
+
     private Date contactBegin;
 
     private Date contactEnd;
