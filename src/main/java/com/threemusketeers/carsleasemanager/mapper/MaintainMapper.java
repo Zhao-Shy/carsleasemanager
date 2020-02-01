@@ -2,8 +2,6 @@ package com.threemusketeers.carsleasemanager.mapper;
 
 import com.threemusketeers.carsleasemanager.entity.Maintain;
 
-import java.util.List;
-
 public interface MaintainMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -12,8 +10,6 @@ public interface MaintainMapper {
     int insertSelective(Maintain record);
 
     Maintain selectByPrimaryKey(Integer id);
-
-    List<Maintain> selectByAll(Maintain maintain);
 
     int updateByPrimaryKeySelective(Maintain record);
 

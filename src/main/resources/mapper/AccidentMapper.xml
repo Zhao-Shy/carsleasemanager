@@ -23,20 +23,6 @@
     from vehicle_accident
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByAll" resultMap="BaseResultMap" parameterType="com.threemusketeers.carsleasemanager.entity.Accident">
-    select
-    <include refid="Base_Column_List" />
-    from vehicle_accident
-    where
-    1=1
-    <if test="accidentTime != null" >
-     and accident_time = #{accidentTime,jdbcType=TIMESTAMP}
-    </if>
-    <if test="vehicleId != null" >
-     and vehicle_id = #{vehicleId,jdbcType=INTEGER}
-    </if>
-
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from vehicle_accident
     where id = #{id,jdbcType=INTEGER}

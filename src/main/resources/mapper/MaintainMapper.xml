@@ -24,22 +24,6 @@
     from vehicle_maintain
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByAll" resultMap="BaseResultMap" parameterType="com.threemusketeers.carsleasemanager.entity.Maintain">
-    select
-    <include refid="Base_Column_List" />
-    from vehicle_maintain
-    where
-        1=1
-    <if test="beginTime != null" >
-      and begin_time = #{beginTime,jdbcType=TIMESTAMP}
-    </if>
-    <if test="endTime != null" >
-      and end_time = #{endTime,jdbcType=TIMESTAMP}
-    </if>
-    <if test="vehicleId != null" >
-      and vehicle_id =  #{vehicleId,jdbcType=INTEGER}
-    </if>
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from vehicle_maintain
     where id = #{id,jdbcType=INTEGER}
