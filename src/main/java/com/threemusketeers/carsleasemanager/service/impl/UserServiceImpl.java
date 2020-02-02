@@ -7,6 +7,8 @@ import com.threemusketeers.carsleasemanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -47,5 +49,23 @@ public class UserServiceImpl implements UserService {
     public String selectUser(String username) {
         String s = userMapperExtend.selectUser(username);
         return s;
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        List<User> users = userMapperExtend.getAllUser();
+        return users;
+    }
+
+    @Override
+    public int delUserById(Integer id) {
+        int i = userMapper.deleteByPrimaryKey(id);
+        return i;
+    }
+
+    @Override
+    public int editUser(User user) {
+        int i = userMapper.updateByPrimaryKeySelective(user);
+        return i;
     }
 }

@@ -5,12 +5,10 @@ import com.threemusketeers.carsleasemanager.http.ResponseEntityBase;
 import com.threemusketeers.carsleasemanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -58,5 +56,41 @@ public class UserController {
             return responseEntityBase;
         }
         return responseEntityBase.failed("账户或密码错误, 请重试");
+    }
+
+    @GetMapping("/show")
+    public ResponseEntityBase showAllUser() {
+        List<User> users = userService.getAllUser();
+        ResponseEntityBase responseEntityBase = new ResponseEntityBase();
+        if (users.size() > 0) {
+            responseEntityBase.setCode(1);
+            responseEntityBase.setData(users);
+            return responseEntityBase;
+        }
+        return responseEntityBase.failed("错误, 请重试或联系开发人员");
+    }
+
+    @GetMapping("/del")
+    public ResponseEntityBase delUserById(@RequestParam Integer id) {
+        int i = userService.delUserById(id);
+        ResponseEntityBase responseEntityBase = new ResponseEntityBase();
+        if (i > 0) {
+            responseEntityBase.setCode(1);
+            responseEntityBase.setData("删除成功");
+            return responseEntityBase;
+        }
+        return responseEntityBase.failed("删除失败");
+    }
+
+    @PostMapping("/edit")
+    public ResponseEntityBase editUser(@RequestBody User user) {
+        int i = userService.editUser(user);
+        ResponseEntityBase responseEntityBase = new ResponseEntityBase();
+        if (i > 0) {
+            responseEntityBase.setCode(1);
+            responseEntityBase.setData("修改成功");
+            return responseEntityBase;
+        }
+        return responseEntityBase.failed("修改失败");
     }
 }
